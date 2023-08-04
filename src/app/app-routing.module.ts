@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
 
 const routes: Routes = [];
 
@@ -8,3 +9,5 @@ const routes: Routes = [];
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+export const routingComponents = [HeaderComponent];

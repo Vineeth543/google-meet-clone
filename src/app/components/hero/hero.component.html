@@ -1,0 +1,49 @@
+<div class="flex items-center justify-between mt-40 px-20">
+  <div class="w-5/12 flex flex-col gap-10">
+    <h1 class="text-5xl">Premium video meetings. Now free for everyone.</h1>
+    <span class="text-xl text-gray-500">
+      We re-engineered the service we built for secure business meetings, Google
+      Meet, to make it free and available for all.
+    </span>
+    <div class="flex gap-8 items-center">
+      <button
+        class="text-white bg-blue-600 px-5 py-3 text-xl font-semibold flex items-center gap-3 rounded-md whitespace-nowrap"
+      >
+        <span class="material-symbols-outlined"> videocam </span>
+        New meeting
+      </button>
+      <input
+        type="text"
+        class="border border-black rounded-md px-5 py-3 text-xl text-gray-500 font-semibold outline-blue-600"
+        placeholder="Enter meeting code"
+        onfocus="this.placeholder = ''"
+        onblur="this.placeholder = 'Enter meeting code'"
+        (focus)="isJoinButtonVisible = true"
+        (blur)="!meetingId && (isJoinButtonVisible = false)"
+        [(ngModel)]="meetingId"
+      />
+      <button
+        *ngIf="isJoinButtonVisible"
+        class="h-fit text-xl font-semibold"
+        [disabled]="!meetingId"
+        [class]="!meetingId ? 'text-gray-400' : 'text-blue-700'"
+      >
+        Join
+      </button>
+    </div>
+  </div>
+  <div class="flex flex-col items-center">
+    <img
+      src="https://www.gstatic.com/meet/user_edu_get_a_link_light_90698cd7b4ca04d3005c962a3756c42d.svg"
+      alt="Google Meet"
+      class="w-3/5"
+    />
+    <div class="w-3/4 flex flex-col text-center">
+      <span>Get a link you can share</span>
+      <span
+        >Click <strong>New meeting</strong> to get a link you can send to people
+        you want to meet with</span
+      >
+    </div>
+  </div>
+</div>

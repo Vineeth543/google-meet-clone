@@ -1,26 +1,28 @@
 <div class="w-full h-screen bg-gray-900 flex flex-col items-center">
-  <div class="w-full h-[95vh] flex flex-wrap items-center justify-center">
+  <div
+    class="container mx-auto w-full h-[95vh] flex flex-wrap items-center justify-center"
+  >
     <img src="../../../../assets/images/frame.png" alt="frame" class="w-96" />
   </div>
   <div class="flex gap-10">
     <span
       class="material-symbols-outlined text-white cursor-pointer"
       (click)="toggleMic()"
-      [class.text-red-500]="!isMicOn"
+      [class.text-red-600]="!isMicOn"
     >
       {{ isMicOn ? "mic" : "mic_off" }}
     </span>
     <span
       class="material-symbols-outlined text-white cursor-pointer"
       (click)="toggleVideo()"
-      [class.text-red-500]="!isVideoOn"
+      [class.text-red-600]="!isVideoOn"
     >
       {{ isVideoOn ? "videocam" : "videocam_off" }}
     </span>
     <span
       class="material-symbols-outlined text-white cursor-pointer"
       (click)="toggleScreenSharing()"
-      [class.text-red-500]="isScreenSharingOn"
+      [class.text-red-600]="isScreenSharingOn"
     >
       {{ isScreenSharingOn ? "stop_screen_share" : "screen_share" }}
     </span>

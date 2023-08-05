@@ -1,0 +1,34 @@
+<div class="w-full h-screen bg-gray-900 flex flex-col items-center">
+  <div class="w-full h-[95vh] flex flex-wrap items-center justify-center">
+    <img src="../../../../assets/images/frame.png" alt="frame" class="w-96" />
+  </div>
+  <div class="flex gap-10">
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="toggleMic()"
+      [class.text-red-500]="!isMicOn"
+    >
+      {{ isMicOn ? "mic" : "mic_off" }}
+    </span>
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="toggleVideo()"
+      [class.text-red-500]="!isVideoOn"
+    >
+      {{ isVideoOn ? "videocam" : "videocam_off" }}
+    </span>
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="toggleScreenSharing()"
+      [class.text-red-500]="isScreenSharingOn"
+    >
+      {{ isScreenSharingOn ? "stop_screen_share" : "screen_share" }}
+    </span>
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="endOrLeaveMeeting()"
+    >
+      call_end
+    </span>
+  </div>
+</div>

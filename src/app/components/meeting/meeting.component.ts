@@ -9,6 +9,7 @@ export class MeetingComponent {
   isMicOn = true;
   isVideoOn = true;
   isScreenSharingOn = false;
+  participants = [1];
 
   toggleMic() {
     this.isMicOn = !this.isMicOn;
@@ -23,4 +24,8 @@ export class MeetingComponent {
   }
 
   endOrLeaveMeeting() {}
+
+  addParticipant() {
+    this.participants.push(1);
+  }
 }

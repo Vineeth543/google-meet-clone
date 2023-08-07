@@ -1,10 +1,23 @@
-<div class="w-full h-screen bg-gray-900 flex flex-col items-center">
+<div
+  class="w-full h-screen bg-gray-900 flex flex-col items-center overflow-hidden"
+>
   <div
-    class="container mx-auto w-full h-[95vh] flex flex-wrap items-center justify-center"
+    class="w-full h-[95vh] flex flex-wrap items-center justify-center overflow-y-auto"
   >
-    <img src="../../../../assets/images/frame.png" alt="frame" class="w-96" />
+    <div *ngFor="let p of participants" class="w-96 m-1 relative">
+      <img
+        src="../../../../assets/images/frame.png"
+        alt="frame"
+        class="w-full object-fit"
+      />
+      <img
+        src="https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png"
+        alt="logo"
+        class="w-1/6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      />
+    </div>
   </div>
-  <div class="flex gap-10">
+  <div class="h-[5vh] flex gap-10 items-center">
     <span
       class="material-symbols-outlined text-white cursor-pointer"
       (click)="toggleMic()"
@@ -31,6 +44,12 @@
       (click)="endOrLeaveMeeting()"
     >
       call_end
+    </span>
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="addParticipant()"
+    >
+      person_add
     </span>
   </div>
 </div>

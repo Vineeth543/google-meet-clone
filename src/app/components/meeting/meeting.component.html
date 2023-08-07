@@ -1,0 +1,55 @@
+<div
+  class="w-full h-screen bg-gray-900 flex flex-col items-center overflow-hidden"
+>
+  <div
+    class="w-full h-[95vh] flex flex-wrap items-center justify-center overflow-y-auto"
+  >
+    <div *ngFor="let p of participants" class="w-96 m-1 relative">
+      <img
+        src="../../../../assets/images/frame.png"
+        alt="frame"
+        class="w-full object-fit"
+      />
+      <img
+        src="https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png"
+        alt="logo"
+        class="w-1/6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      />
+    </div>
+  </div>
+  <div class="h-[5vh] flex gap-10 items-center">
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="toggleMic()"
+      [class.text-red-600]="!isMicOn"
+    >
+      {{ isMicOn ? "mic" : "mic_off" }}
+    </span>
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="toggleVideo()"
+      [class.text-red-600]="!isVideoOn"
+    >
+      {{ isVideoOn ? "videocam" : "videocam_off" }}
+    </span>
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="toggleScreenSharing()"
+      [class.text-red-600]="isScreenSharingOn"
+    >
+      {{ isScreenSharingOn ? "stop_screen_share" : "screen_share" }}
+    </span>
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="endOrLeaveMeeting()"
+    >
+      call_end
+    </span>
+    <span
+      class="material-symbols-outlined text-white cursor-pointer"
+      (click)="addParticipant()"
+    >
+      person_add
+    </span>
+  </div>
+</div>

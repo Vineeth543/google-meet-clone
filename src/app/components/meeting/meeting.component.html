@@ -4,17 +4,26 @@
   <div
     class="w-full h-[95vh] flex flex-wrap items-center justify-center overflow-y-auto"
   >
-    <div *ngFor="let p of participants" class="w-96 m-1 relative">
+    <div
+      *ngFor="let p of participants"
+      class="w-96 m-1 relative overflow-hidden"
+    >
       <img
         src="../../../../assets/images/frame.png"
         alt="frame"
-        class="w-full object-fit"
+        class="w-full object-fit relative z-10"
       />
       <img
+        *ngIf="!isVideoOn"
         src="https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png"
         alt="logo"
         class="w-1/6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
       />
+      <webcam
+        *ngIf="isVideoOn"
+        class="w-[17rem] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        (initError)="handleInitError($event)"
+      ></webcam>
     </div>
   </div>
   <div class="h-[5vh] flex gap-10 items-center">
@@ -29,6 +38,8 @@
       class="material-symbols-outlined text-white cursor-pointer"
       (click)="toggleVideo()"
       [class.text-red-600]="!isVideoOn"
+      [class.cursor-not-allowed]="!cameraAccess"
+      [class.opacity-50]="!cameraAccess"
     >
       {{ isVideoOn ? "videocam" : "videocam_off" }}
     </span>

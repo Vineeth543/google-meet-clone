@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WebcamInitError } from 'ngx-webcam';
 
 @Component({
   selector: 'app-meeting',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 export class MeetingComponent {
   isMicOn = true;
   isVideoOn = true;
+  cameraAccess = true;
   isScreenSharingOn = false;
   participants = [1];
 
@@ -16,6 +18,7 @@ export class MeetingComponent {
   }
 
   toggleVideo() {
+    if (!this.cameraAccess) return;
     this.isVideoOn = !this.isVideoOn;
   }
 
@@ -27,5 +30,16 @@ export class MeetingComponent {
 
   addParticipant() {
     this.participants.push(1);
+  }
+
+  handleInitError(error: WebcamInitError): void {
+    if (
+      error.mediaStreamError &&
+      error.mediaStreamError.name === 'NotAllowedError'
+    ) {
+      this.isVideoOn = false;
+      this.cameraAccess = false;
+      console.warn('Camera access was not allowed by user!');
+    }
   }
 }

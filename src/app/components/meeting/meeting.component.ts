@@ -37,7 +37,6 @@ export class MeetingComponent {
       error.mediaStreamError &&
       error.mediaStreamError.name === 'NotAllowedError'
     ) {
-      this.isVideoOn = false;
       this.cameraAccess = false;
       console.warn('Camera access was not allowed by user!');
     }

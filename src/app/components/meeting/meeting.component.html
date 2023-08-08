@@ -14,7 +14,7 @@
         class="w-full object-fit relative z-10"
       />
       <img
-        *ngIf="!isVideoOn"
+        *ngIf="!isVideoOn || !cameraAccess"
         src="https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png"
         alt="logo"
         class="w-1/6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
@@ -28,25 +28,24 @@
   </div>
   <div class="h-[5vh] flex gap-10 items-center">
     <span
-      class="material-symbols-outlined text-white cursor-pointer"
+      class="material-symbols-outlined cursor-pointer"
       (click)="toggleMic()"
-      [class.text-red-600]="!isMicOn"
+      [class]="isMicOn ? 'text-white' : 'text-red-500'"
     >
       {{ isMicOn ? "mic" : "mic_off" }}
     </span>
     <span
-      class="material-symbols-outlined text-white cursor-pointer"
+      class="material-symbols-outlined"
       (click)="toggleVideo()"
-      [class.text-red-600]="!isVideoOn"
-      [class.cursor-not-allowed]="!cameraAccess"
-      [class.opacity-50]="!cameraAccess"
+      [class]="isVideoOn ? 'text-white' : 'text-red-500'"
+      [ngClass]="cameraAccess ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'"
     >
-      {{ isVideoOn ? "videocam" : "videocam_off" }}
+      {{ isVideoOn && cameraAccess ? "videocam" : "videocam_off" }}
     </span>
     <span
-      class="material-symbols-outlined text-white cursor-pointer"
+      class="material-symbols-outlined cursor-pointer"
       (click)="toggleScreenSharing()"
-      [class.text-red-600]="isScreenSharingOn"
+      [class]="isScreenSharingOn ? 'text-red-500' : 'text-white'"
     >
       {{ isScreenSharingOn ? "stop_screen_share" : "screen_share" }}
     </span>

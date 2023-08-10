@@ -21,13 +21,9 @@ export class HeroComponent implements OnInit {
   }
 
   createNewMeeting() {
-    const meetingId = Math.random()
-      .toString(36)
-      .substring(2, 11)
-      .match(/.{1,3}/g)
-      ?.join('-');
-    this.socketService.emit('meeting:join', { name: 'Vineeth', meetingId });
-    this.route.navigate([meetingId]);
+    const meetingId = Math.random().toString(36).substring(2, 11);
+    this.socketService.emit('meeting:join', { name: 'Puneeth', meetingId });
+    this.route.navigate([meetingId.match(/.{1,3}/g)?.join('-')]);
   }
 
   joinMeeting() {
